@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import { configDotenv } from "dotenv";
 import { connectMongoDb } from "./database/db";
 import { categoryRoute } from "./routes/food-category.route";
+import { foodRoute } from "./routes/food.route";
 
 configDotenv();
 connectMongoDb();
@@ -11,6 +12,7 @@ app.use(bodyParser.json());
 const port = process.env.port;
 
 app.use("/food-category", categoryRoute);
+app.use("/food", foodRoute);
 
 app.get("/", (req, res) => {
   res.send("hello world");
