@@ -4,11 +4,13 @@ import { configDotenv } from "dotenv";
 import { connectMongoDb } from "./database/db";
 import { categoryRoute } from "./routes/food-category.route";
 import { foodRoute } from "./routes/food.route";
+import cors from "cors";
 
 configDotenv();
 connectMongoDb();
 const app = express();
 app.use(bodyParser.json());
+app.use(cors());
 const port = process.env.port;
 
 app.use("/food-category", categoryRoute);

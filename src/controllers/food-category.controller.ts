@@ -18,7 +18,7 @@ export const getFoodCategories = async (req: Request, res: Response) => {
     const allCategory = await foodCategoryModel.find();
     res
       .status(200)
-      .json({ message: "Successfully get category", data: allCategory });
+      .json({ message: "Successfully get categories", data: allCategory });
   } catch (error) {
     res.status(500).json({ message: "Error in get FoodCategory", error });
   }
