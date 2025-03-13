@@ -59,12 +59,13 @@ export const getCategoryById = async (req: any, res: Response) => {
   res.json();
 };
 
-
 export const putCategoryById = async (req: any, res: Response) => {
   const { foodCategoryId } = req.params;
-  const {categoryName}=req.body
   try {
-    const allCategory = await foodCategoryModel.updateOne({ _id: foodCategoryId },{categoryName});
+    const allCategory = await foodCategoryModel.updateOne(
+      { _id: foodCategoryId },
+      req.body
+    );
     res
       .status(200)
       .json({ message: "Successfully put category id", data: allCategory });
@@ -76,9 +77,12 @@ export const putCategoryById = async (req: any, res: Response) => {
 
 export const deleteCategoryById = async (req: any, res: Response) => {
   const { foodCategoryId } = req.params;
-  const {categoryName}=req.body
+  const { categoryName } = req.body;
   try {
-    const allCategory = await foodCategoryModel.deleteOne({ _id: foodCategoryId },{categoryName});
+    const allCategory = await foodCategoryModel.deleteOne(
+      { _id: foodCategoryId },
+      { categoryName }
+    );
     res
       .status(200)
       .json({ message: "Successfully delete category id", data: allCategory });
