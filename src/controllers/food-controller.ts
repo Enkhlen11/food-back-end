@@ -29,7 +29,7 @@ export const getFood = async (req: Request, res: Response) => {
 
 export const getAllFood = async (req: Request, res: Response) => {
   try {
-    const allFood = await foodModel.find();
+    const allFood = await foodModel.find().populate("category");
     console.log(allFood);
     res
       .status(200)
