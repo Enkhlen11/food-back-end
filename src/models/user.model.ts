@@ -4,12 +4,21 @@ type UserSchemaType = {
   email: string;
   password: string;
   phoneNumber: string;
-  orderedFoods: Schema.Types.ObjectId[];
-  role: string;
+  address: string;
+  role: "USER" | "ADMIN";
+  orderedFoods: string[];
+
   isVerified: boolean;
 };
 const UserSchema: Schema = new Schema(
-  { userName: { type: String, required: true } },
+  {
+    email: { type: String, required: true },
+    password: { type: String, required: true },
+    phoneNumber: { type: String, default: "" },
+    address: { type: String, default: "" },
+    role: ["USER", "ADMIN"],
+    orderedFoods: { type: [Schema.ObjectId], ref: "FoodsOrder" },
+  },
   { timestamps: true }
 );
 export default mongoose.model<UserSchemaType>("User", UserSchema);
