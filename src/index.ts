@@ -4,6 +4,7 @@ import { configDotenv } from "dotenv";
 import { connectMongoDb } from "./database/db";
 import { categoryRoute } from "./routes/food-category.route";
 import { foodRoute } from "./routes/food.route";
+import { userRoute } from "./routes/auth.route";
 import cors from "cors";
 
 configDotenv();
@@ -15,6 +16,7 @@ const port = process.env.port;
 
 app.use("/food-category", categoryRoute);
 app.use("/food", foodRoute);
+app.use("/auth", userRoute);
 
 app.get("/", (req, res) => {
   res.send("hello world");

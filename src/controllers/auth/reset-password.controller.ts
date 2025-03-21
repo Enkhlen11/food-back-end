@@ -3,6 +3,7 @@ import jwt, { JwtPayload } from "jsonwebtoken";
 import userModel from "../../models/user.model";
 import { hashSync } from "bcryptjs";
 
+
 export const resetPassword = async (req: Request, res: Response) => {
   const jwtSecret = process.env.JWT_SECRET;
   try {
